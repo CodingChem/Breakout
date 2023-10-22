@@ -1,0 +1,48 @@
+@startuml 
+class Game {
+    + board: Board
+    + screen: Pygame.display.setmode()
+    - update()
+    - draw()
+    - event()
+    - loop()
+}
+
+class Board {
+    + size: x, y
+    + bricks: [Rectangle]
+    + player: Player
+    + balls: [Ball]
+    + update()
+    + draw(screen)
+}
+
+class Rectangle {
+    + position: Vector2D
+    + size: x: int, y: int
+    + draw()
+    + collide()
+}
+
+class Player {
+    - velocity: Vector2D
+    + set_velocity()
+    + launch()
+    + update()
+}
+
+class Ball {
+    - position: Vector2D
+    - velocity: Vector2D
+    - size: radius:int
+    + draw()
+    + update()
+    + collide()
+}
+
+Game *-- Board
+Rectangle <|-- Player
+Board *-- Player
+Board *-- Rectangle
+Board *-- Ball
+@enduml
