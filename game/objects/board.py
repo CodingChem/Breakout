@@ -1,10 +1,11 @@
 from typing import Self
 from objects.vector import Vector2D
 from objects.player import Player
+from objects.rectangle import Rectangle
 
 class Board:
 
-    def __init__(self, size, draw_circle, draw_rect):
+    def __init__(self, size):
         self.size = size
         self.bricks = self.create_bricks()
         self.player = Player()
@@ -18,8 +19,8 @@ class Board:
 
 
     def draw(self) -> None:
-        self.draw_circle(Vector2D(100,100),{'radius': 20})
-
-
-    def create_bricks(self) -> lst[Brick, ...]:
         pass
+
+
+    def create_bricks(self) -> list[Rectangle, ...]:
+        return []
