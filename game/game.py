@@ -1,7 +1,7 @@
 from sys import exit
 import pygame
 from typing import Self
-from objects.board import Board 
+from objects.board import Board
 from objects.vector import Vector2D
 
 class Game:
@@ -13,7 +13,7 @@ class Game:
         self.screen_size = screen_size
         self.screen = None
         self.board = None
-    
+
 
     def initialize_screen(self) -> None:
         self.screen = pygame.display.set_mode(self.screen_size)
@@ -48,7 +48,7 @@ class Game:
             self.update()
             self.draw()
 
-    
+
     def handle_events(self) -> None:
         for event in pygame.event.get():
             match event.type:
