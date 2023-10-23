@@ -20,7 +20,7 @@ class Game:
 
 
     def initialize_board(self) -> None:
-        self.board = Board(self.screen_size, self.draw_circle, self.draw_rectangle)
+        self.board = Board(self.screen_size)
 
 
     def draw_circle(
