@@ -1,8 +1,8 @@
 from sys import exit
-import pygame
 from typing import Self
 from objects.board import Board
 from objects.vector import Vector2D
+from factory import GameEngineProvider
 
 class Game:
     """This class handles the interactions between our Board class and pygame"""
@@ -11,7 +11,8 @@ class Game:
             screen_size: tuple[int, int],
     ) -> Self:
         self.screen_size = screen_size
-        self.screen = None
+        self.provider = GameEngineProvider(screen_size)
+        self.screen = GameEngineProvider.get_screen()
         self.board = None
 
 
