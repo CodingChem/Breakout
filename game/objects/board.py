@@ -19,3 +19,7 @@ class Board:
 
     def draw(self) -> None:
         self.draw_circle(Vector2D(100,100),{'radius': 20})
+
+
+    def create_bricks(self) -> lst[Brick, ...]:
+        pass
