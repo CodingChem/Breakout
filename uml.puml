@@ -1,11 +1,12 @@
 @startuml 
 class Game {
     + board: Board
-    + screen: Pygame.display.setmode()
+    + screen: Pygame.display.setmode
     - update()
     - draw()
-    - event()
+    - handle_events()
     - loop()
+    - initialize_screen()
 }
 
 class Board {

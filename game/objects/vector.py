@@ -16,13 +16,13 @@ class Vector2D:
             y: int
     ) -> None:
         """Set new x & y values"""
-        self.x = x,
+        self.x = x
         self.y = y
 
 
     def __add__(
             self,
-            other: self
+            other: Self
     ) -> Self:
         """Returns the sum of two vectors"""
         return Vector2D(
@@ -30,6 +30,10 @@ class Vector2D:
             y = self.y + other.y
         )
     
+
+    def get_tuple(self) -> tuple[int,int]:
+        return self.x, self.y
+
 
     def reflect_vertical(
             self,
