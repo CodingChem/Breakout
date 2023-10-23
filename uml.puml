@@ -1,49 +1,57 @@
 @startuml 
+class Vector {
+    - x
+    - y
+    + get_tuple(): tuple[x,y]
+    + __add__(other): Vector
+    + reflect_horizontal()
+    + reflect_vertical()
+}
 class Game {
-    + board: Board
-    + screen: Pygame.display.setmode
+    - display
+    - screen_size: tuple[x,y]
+    - player: Player
+    - ball: Ball
+    - bricks: BrickList
+    + start_game()
+    - initialize_game()
     - update()
     - draw()
-    - handle_events()
     - loop()
-    - initialize_screen()
 }
-
-class Board {
-    + size: x, y
-    + bricks: [Rectangle]
-    + player: Player
-    + balls: [Ball]
-    + update()
-    + draw(screen)
-}
-
-class Rectangle {
-    + position: Vector2D
-    + size: x: int, y: int
-    + draw()
-    + collide()
-}
-
 class Player {
-    - velocity: Vector2D
-    + set_velocity()
-    + launch()
-    + update()
-}
 
-class Ball {
-    - position: Vector2D
-    - velocity: Vector2D
-    - size: radius:int
+}
+class BrickList {
+    - bricks: list[Rectangle]
     + draw()
-    + update()
+    + add_brick()
+    + remove_brick()
+}
+class Rectangle {
+    - rect: pygame.Rect
+}
+class Ball {
+    - radius: int
+    - size: int
+}
+abstract class DrawableShape {
+    + draw()
     + collide()
 }
-
-Game *-- Board
+abstract class MovingObject {
+    - velocity: Vector
+    + update()
+}
+DrawableShape <|-- Rectangle
 Rectangle <|-- Player
-Board *-- Player
-Board *-- Rectangle
-Board *-- Ball
+MovingObject <|-- Player
+MovingObject <|-- Ball
+DrawableShape <|-- Ball
+Vector *-- MovingObject
+Rectangle o-- BrickList
+BrickList *-- Game
+Player *-- Game
+Ball *-- Game
+
 @enduml

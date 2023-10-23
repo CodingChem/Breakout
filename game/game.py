@@ -1,81 +1,35 @@
-from sys import exit
 from typing import Self
-from objects.board import Board
-from objects.vector import Vector2D
-from factory import GameEngineProvider
+import pygame
+
 
 class Game:
-    """This class handles the interactions between our Board class and pygame"""
+    """The Game object is responsible to run our game instance"""
     def __init__(
             self,
-            screen_size: tuple[int, int],
-    ) -> Self:
-        self.screen_size = screen_size
-        self.provider = GameEngineProvider(screen_size)
-        self.screen = GameEngineProvider.get_screen()
-        self.board = None
+            screen_width: int = 400,
+            screen_height: int = 800,
+        ) -> Self:
+        self.screen_size = (screen_width, screen_height)
+        self.player = Player()
+        self.ball = Ball()
+        self.bricks = BrickList()
 
 
-    def initialize_screen(self) -> None:
-        self.screen = pygame.display.set_mode(self.screen_size)
+    def start_game(self) -> None:
+        raise NotImplemented
 
 
-    def initialize_board(self) -> None:
-        self.board = Board(self.screen_size)
+    def _initialize_game(self) -> None:
+        pass
 
 
-    def draw_circle(
-            self,
-            pos: Vector2D,
-            size: {'radius': int}
-            ) -> None:
-        pygame.draw.circle(self.screen,(255,255,255),(pos.x, pos.y),size['radius'])
+    def _update(self) -> None:
+        pass
 
 
-    def draw_rectangle(
-            self,
-            pos: Vector2D,
-            size: {
-                'width': int,
-                'height': int
-                }
-            ) -> None:
-        pygame.draw.rect(self.screen, (255,255,255),pygame.rect(pos.x,pos.y,pos.x+size['width'], pos.y + size['height']))
+    def _draw(self) -> None:
+        pass
 
 
-    def loop(self) -> None:
-        while True:
-            self.handle_events()
-            self.update()
-            self.draw()
-
-
-    def handle_events(self) -> None:
-        for event in pygame.event.get():
-            match event.type:
-                case pygame.QUIT:
-                    pygame.quit()
-                    exit()
-                case pygame.KEYDOWN:
-                    match event.key:
-                        case pygame.K_RIGHT:
-                            pass
-                        case pygame.K_LEFT:
-                            pass
-
-
-    def update(self) -> None:
-        self.board.update()
-
-
-    def draw(self) -> None:
-        self.screen.fill((0,0,0))
-        self.board.draw()
-        pygame.display.update()
-
-
-if __name__ == '__main__':
-    game = Game((400,600))
-    game.initialize_screen()
-    game.initialize_board()
-    game.loop()
+    def _loop(self) -> None:
+        pass
