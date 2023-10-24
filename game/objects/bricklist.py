@@ -1,3 +1,10 @@
 class BrickList(list):
-    def draw(self):
+
+
+    def add_rectangle(self, r):
         pass
+
+
+    def draw(self):
+        for rectangle in self:
+            rectangle.draw()

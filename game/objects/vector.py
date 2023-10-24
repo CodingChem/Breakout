@@ -13,7 +13,7 @@ class Vector:
         self._y = y
 
 
-    def get_tuple(self):
+    def get_tuple(self) -> tuple[int,int]:
         """Returns a tuple of the vector coordinates"""
         return (self._x, self._y)
 

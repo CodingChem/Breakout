@@ -11,7 +11,6 @@ class Game {
     - display
     - screen_size: tuple[x,y]
     - player: Player
-    - ball: Ball
     - bricks: BrickList
     + start_game()
     - handle_events()
@@ -37,6 +36,7 @@ class Ball {
     - size: int
 }
 abstract class DrawableShape {
+    + color: tuple[int,int,int]
     + draw()
     + collide()
 }
@@ -45,14 +45,13 @@ abstract class MovingObject {
     + update()
 }
 DrawableShape <|-- Rectangle
-Rectangle <|-- Player
-MovingObject <|-- Player
+Rectangle *-- Player
 MovingObject <|-- Ball
 DrawableShape <|-- Ball
 Vector *-- MovingObject
 Rectangle o-- BrickList
 BrickList *-- Game
 Player *-- Game
-Ball *-- Game
+Ball *-- Player
 
 @enduml
