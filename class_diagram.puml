@@ -1,3 +1,59 @@
 @startuml class diagram
+class Ball {
+    - rect: Rect
+    - dx: int
+    - dy: int
+    - color: Color
+    + Ball(paddle: Paddle, dx: int, dy: int, color: Color, radius: int)
+    + void: place_on_paddle(Paddle)
+    + void: draw(SurfaceType)
+    + void: update(speed: int)
+    + Brick | None: bounce(screen_width: int, bricks: list[Brick], Paddle)
+    + bool: is_on_paddle()
+    + void: shoot()
+}
+class Brick {
+    - rect: Rect
+    - color: Color
+    + Brick(x: int, y: int, width: int, height: int, color: Color)
+    + void: draw(SurfaceType)
+}
+class Paddle {
+    - rect: Rect
+    - color: Color
+    + Paddle(x: int, y: int, width: int, height: int, color: Color)
+    + void: draw(SurfaceType)
+    + void: update(speed: int, border_width: int)
+}
+class Game {
+    - score: int
+    - lives: int
+    - font: Font
+    - screen: SurfaceType
+    - paddle: Paddle
+    - ball: Ball
+    - bricks: list[bricks]
+    + Game(width: int, height: int)
+    + void: reset_bricks()
+    + void: draw_text(text:string, pos: list[int,int])
+    + void: run_game()
+    + void: draw()
+    + void: handle_events()
+    + void: update()
+}
+class Color {
+    - red: int
+    - green: int
+    - blue: int
+    + Color(string)
+    + Color(int,int,int)
+    + tuple[int, int, int] : to_tuple()
+}
 
+Color *-- Ball
+Color *-- Paddle
+Color *-- Brick
+Ball *-- Game
+Paddle *-- Game
+Brick *-- Game
 @enduml
