@@ -1,7 +1,7 @@
 from pygame import SurfaceType, Rect, K_LEFT, K_RIGHT
 from pygame.key import get_pressed as get_key_pressed
 from pygame.draw import rect as draw_rect
-
+from .color import Color
 
 class Paddle:
     def __init__(
@@ -10,7 +10,7 @@ class Paddle:
             y: int,
             width: int = 80,
             height: int = 10,
-            color: tuple[int,int,int] = (255,255,255)
+            color: Color = Color('white')
     ) -> None:
         """Initialize the paddle class
 
@@ -30,7 +30,7 @@ class Paddle:
             screen: SurfaceType
     ) -> None:
         """Draw the paddle on the surface object"""
-        draw_rect(screen, self.color, self.rect)
+        draw_rect(screen, self.color.to_tuple(), self.rect)
 
 
     def update(

@@ -1,6 +1,7 @@
 from pygame import SurfaceType, Rect
 from pygame.draw import rect as draw_rect
 from random import randint
+from .color import Color
 
 class Brick:
     def __init__(
@@ -9,7 +10,7 @@ class Brick:
             y: int,
             width: int = 60,
             height: int = 20,
-            color: tuple[int,int,int] = (randint(0,255), randint(0,255), randint(0,255))
+            color: Color = Color(None, randint(0,255), randint(0,255), randint(0,255))
     ) -> None:
         """Initializes the Brick class
 
@@ -27,4 +28,4 @@ class Brick:
     def draw(self, screen: SurfaceType) -> None:
         """Draw the brick on the screen
         """
-        draw_rect(screen, self.color, self.rect)
+        draw_rect(screen, self.color.to_tuple(), self.rect)
