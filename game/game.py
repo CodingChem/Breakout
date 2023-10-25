@@ -19,8 +19,6 @@ class Game:
         pygame.init()
         self.font = pygame.font.Font(None,36)
         self.score = 0
-        self.width = width
-        self.height = height
         self.screen = pygame.display.set_mode((width,height))
         self.clock = pygame.time.Clock()
         self.paddle = Paddle( int(width / 2), height - 20)
@@ -89,7 +87,7 @@ class Game:
             self.bricks.remove(hit_brick)
             self.score += 1
 
-        if self.ball.rect.bottom > self.height:
+        if self.ball.rect.bottom > self.screen.get_height():
             self.lives -= 1
             if self.lives == 0:
                 self.lives = 3
