@@ -35,7 +35,7 @@ class Game:
         self.bricks = []
         for i in range(5):
             for j in range(12):
-                self.bricks.append(Brick(self.screen,j * 60 + 50, i * 20 + 50))
+                self.bricks.append(Brick(j * 60 + 50, i * 20 + 50))
 
 
     # TODO
@@ -63,7 +63,7 @@ class Game:
         self.paddle.draw()
         self.ball.draw()
         for brick in self.bricks:
-            brick.draw()
+            brick.draw(self.screen)
         pygame.display.flip()
 
 

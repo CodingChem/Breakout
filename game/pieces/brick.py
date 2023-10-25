@@ -5,7 +5,6 @@ from random import randint
 class Brick:
     def __init__(
             self,
-            screen: SurfaceType,
             x: int,
             y: int,
             width: int = 60,
@@ -15,7 +14,6 @@ class Brick:
         """Initializes the Brick class
 
         Args:
-            screen (pygame.SurfaceType): The surface object to draw the brick on.
             x (int): initial x-coordinate of the brick
             y (int): initial y-coordinate of the brick
             width (int): The width of the brick. Defaults to 60
@@ -24,10 +22,9 @@ class Brick:
         """
         self.rect = Rect(x, y, width, height)
         self.color = color
-        self.screen = screen
 
 
-    def draw(self) -> None:
+    def draw(self, screen: SurfaceType) -> None:
         """Draw the brick on the screen
         """
-        draw_rect(self.screen, self.color, self.rect)
+        draw_rect(screen, self.color, self.rect)
