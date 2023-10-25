@@ -23,7 +23,7 @@ class Game:
         self.height = height
         self.screen = pygame.display.set_mode((width,height))
         self.clock = pygame.time.Clock()
-        self.paddle = Paddle(self.screen, int(width / 2), height - 20)
+        self.paddle = Paddle( int(width / 2), height - 20)
         self.ball = Ball(self.screen,self.paddle)
 
         self.lives = 3
@@ -60,7 +60,7 @@ class Game:
         """Draws the screen with the objects and updates the display
         """
         self.screen.fill((0,0,0))
-        self.paddle.draw()
+        self.paddle.draw(self.screen)
         self.ball.draw()
         for brick in self.bricks:
             brick.draw(self.screen)
@@ -98,7 +98,7 @@ class Game:
 
 
     def update(self):
-        self.paddle.update(2)
+        self.paddle.update(2, self.screen.get_width())
         self.ball.update(2)
 
 if __name__ == '__main__':
