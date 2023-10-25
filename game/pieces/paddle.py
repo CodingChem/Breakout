@@ -1,38 +1,8 @@
-from pygame import SurfaceType, Rect, K_LEFT, K_RIGHT
+from pygame import K_LEFT, K_RIGHT
 from pygame.key import get_pressed as get_key_pressed
-from pygame.draw import rect as draw_rect
-from .color import Color
+from .brick import Brick
 
-class Paddle:
-    def __init__(
-            self,
-            x: int,
-            y: int,
-            width: int = 80,
-            height: int = 10,
-            color: Color = Color('white')
-    ) -> None:
-        """Initialize the paddle class
-
-        Args:
-            x (int): The initial x-coordinate of the paddle
-            y (int): The initial y-coordinate of the paddle
-            width (int): The width of the paddle. Defaults to 80
-            height (int): The height of the paddle. Defaults to 10
-            color (tuple[int,int,int]): The color of the paddle
-        """
-        self.rect = Rect(x, y, width, height)
-        self.color = color
-
-
-    def draw(
-            self,
-            screen: SurfaceType
-    ) -> None:
-        """Draw the paddle on the surface object"""
-        draw_rect(screen, self.color.to_tuple(), self.rect)
-
-
+class Paddle(Brick):
     def update(
             self,
             speed: int,

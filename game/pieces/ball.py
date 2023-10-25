@@ -1,11 +1,11 @@
-from pygame import SurfaceType, Rect
+from pygame import SurfaceType
 from pygame.draw import circle as draw_circle
 from .paddle import Paddle
 from .brick import Brick
 from .color import Color
 
 
-class Ball:
+class Ball(Brick):
     def __init__(
             self,
             paddle: Paddle,
@@ -24,10 +24,9 @@ class Ball:
             color (int, optional): color of ball. Defaults to white
             radius (int, optional): Radius of ball. Defaults to 10.
         """
-        self.rect = Rect(paddle.rect.top + radius * 2, paddle.rect.centerx - radius, radius * 2, radius * 2)
+        super().__init__(paddle.rect.centerx - radius, paddle.rect.top + radius * 2, radius * 2, radius * 2, color)
         self.dx = dx
         self.dy = dy
-        self.color = color
 
 
     def place_on_paddle(

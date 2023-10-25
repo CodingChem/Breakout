@@ -1,9 +1,7 @@
 @startuml class diagram
 class Ball {
-    - rect: Rect
     - dx: int
     - dy: int
-    - color: Color
     + Ball(paddle: Paddle, dx: int, dy: int, color: Color, radius: int)
     + void: place_on_paddle(Paddle)
     + void: draw(SurfaceType)
@@ -19,10 +17,6 @@ class Brick {
     + void: draw(SurfaceType)
 }
 class Paddle {
-    - rect: Rect
-    - color: Color
-    + Paddle(x: int, y: int, width: int, height: int, color: Color)
-    + void: draw(SurfaceType)
     + void: update(speed: int, border_width: int)
 }
 class Game {
@@ -50,9 +44,9 @@ class Color {
     + tuple[int, int, int] : to_tuple()
 }
 
-Color *-- Ball
-Color *-- Paddle
 Color *-- Brick
+Brick <|-- Ball
+Brick <|-- Paddle
 Ball *-- Game
 Paddle *-- Game
 Brick *-- Game
