@@ -24,7 +24,7 @@ class Game:
         self.screen = pygame.display.set_mode((width,height))
         self.clock = pygame.time.Clock()
         self.paddle = Paddle( int(width / 2), height - 20)
-        self.ball = Ball(self.screen,self.paddle)
+        self.ball = Ball(self.paddle)
 
         self.lives = 3
         self.reset_bricks()
@@ -61,7 +61,7 @@ class Game:
         """
         self.screen.fill((0,0,0))
         self.paddle.draw(self.screen)
-        self.ball.draw()
+        self.ball.draw(self.screen)
         for brick in self.bricks:
             brick.draw(self.screen)
         pygame.display.flip()
@@ -84,7 +84,7 @@ class Game:
             self.ball.dy = 0
             self.draw_text("Winner!", (int(self.screen.get_width() / 2), int(self.screen.get_height() / 2)))
 
-        hit_brick = self.ball.bounce(self.bricks)
+        hit_brick = self.ball.bounce(self.screen.get_width(), self.bricks, self.paddle)
         if hit_brick is not None:
             self.bricks.remove(hit_brick)
             self.score += 1
@@ -94,12 +94,15 @@ class Game:
             if self.lives == 0:
                 self.lives = 3
                 self.reset_bricks()
-            self.ball.on_paddle()
+            self.ball.place_on_paddle(self.paddle)
 
 
     def update(self):
         self.paddle.update(2, self.screen.get_width())
-        self.ball.update(2)
+        if self.ball.is_on_paddle():
+            self.ball.place_on_paddle(self.paddle)
+        else:
+            self.ball.update(2)
 
 if __name__ == '__main__':
     game = Game()
