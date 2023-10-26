@@ -78,8 +78,8 @@ class Game:
                                 self.ball.shoot()
 
         if not self.bricks:
-            self.ball.dx = 0
-            self.ball.dy = 0
+            self.ball.velocity.x = 0
+            self.ball.velocity.y = 0
             self.draw_text("Winner!", (int(self.screen.get_width() / 2), int(self.screen.get_height() / 2)))
 
         hit_brick = self.ball.bounce(self.screen.get_width(), self.bricks, self.paddle)
@@ -87,7 +87,7 @@ class Game:
             self.bricks.remove(hit_brick)
             self.score += 1
 
-        if self.ball.rect.bottom > self.screen.get_height():
+        if self.ball.bottom > self.screen.get_height():
             self.lives -= 1
             if self.lives == 0:
                 self.lives = 3
