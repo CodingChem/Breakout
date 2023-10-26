@@ -99,6 +99,6 @@ class Ball(Brick):
 
     def collide_with_brick(
             self: Self,
-            paddle: Brick
+            brick: Brick
     ):
         self.velocity.flip_vertical_component()
