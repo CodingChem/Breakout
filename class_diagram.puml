@@ -16,17 +16,15 @@ class Brick {
     + void: draw(SurfaceType)
     + void: update(speed: int)
 }
-class Paddle {
-    + void: update(speed: int, border_width: int)
-}
+
 class Game {
     - score: int
     - lives: int
     - font: Font
     - screen: SurfaceType
-    - paddle: Paddle
+    - paddle: Brick
     - ball: Ball
-    - bricks: list[bricks]
+    - bricks: Bricks
     + Game(width: int, height: int)
     + void: reset_bricks()
     + void: draw_text(text:string, pos: list[int,int])
@@ -47,13 +45,17 @@ class Vector {
     + x: float
     + y: float
 }
+class Bricks {
+    + void: reset_bricks()
+}
 
+python.list <|-- Bricks
+Brick *-- Bricks
 pygame.Rect <|-- Brick
 Color *-- Brick
 Vector *-- Brick
 Brick <|-- Ball
-Brick <|-- Paddle
 Ball *-- Game
-Paddle *-- Game
 Brick *-- Game
+Bricks *-- Game
 @enduml
