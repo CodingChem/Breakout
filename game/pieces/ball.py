@@ -1,6 +1,8 @@
 from typing import Self
 from pygame import SurfaceType
 from pygame.draw import circle as draw_circle
+
+from .bricks import Bricks
 from .vector import Vector
 from .paddle import Paddle
 from .brick import Brick
@@ -59,7 +61,7 @@ class Ball(Brick):
     def bounce(
             self,
             screen_width: int,
-            bricks: list[Brick],
+            bricks: Bricks,
             paddle: Paddle
     ) -> None | Brick:
         """Bounce the ball of walls, the paddle and bricks.
