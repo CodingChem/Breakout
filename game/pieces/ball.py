@@ -75,10 +75,12 @@ class Ball(Brick):
             self.velocity.flip_horizontal_component()
         elif self.top < 0:
             self.velocity.flip_vertical_component()
+        elif self.colliderect(paddle):
+            self.collide_with_brick(paddle)
         else:
             hit_brick = self.collidelist(bricks)
             if hit_brick != -1:
-                self.velocity.y *= -1
+                self.collide_with_brick(bricks[hit_brick])
                 return bricks[hit_brick]
 
 
@@ -92,3 +94,10 @@ class Ball(Brick):
         ) -> None:
         self.velocity = paddle.velocity + Vector(0, -1)
         return
+
+
+    def collide_with_brick(
+            self: Self,
+            paddle: Brick
+    ):
+        self.velocity.flip_vertical_component()
