@@ -1,7 +1,6 @@
 @startuml class diagram
 class Ball {
-    - dx: int
-    - dy: int
+    - velocity: Vector
     + Ball(paddle: Paddle, dx: int, dy: int, color: Color, radius: int)
     + void: place_on_paddle(Paddle)
     + void: draw(SurfaceType)
@@ -41,6 +40,10 @@ class Color {
     + Color(string)
     + Color(int,int,int)
     + tuple[int, int, int] : to_tuple()
+}
+class Vector {
+    + x: float
+    + y: float
 }
 
 pygame.Rect <|-- Brick
