@@ -37,7 +37,7 @@ class Ball(Brick):
         Args:
             paddle (Paddle): The paddle object
         """
-        super().update(
+        super().set_position(
             paddle.centerx - self.width / 2,
             paddle.top - self.height,
             self.width,

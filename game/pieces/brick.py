@@ -38,3 +38,13 @@ class Brick(Rect):
 
     def update(self, speed):
         self.move_ip(self.velocity.x * speed, self.velocity.y * speed)
+
+
+    def set_position(
+            self: Self,
+            left: float,
+            top: float,
+            width: float,
+            height: float
+        ):
+        super().update(left, top, width, height)
