@@ -12,7 +12,7 @@ class Game:
             height: int = 600
         ) -> None:
         """Initialize the Game class
-
+>
         Args:
             width (int, optional): Screen width. Defaults to 800.
             height (int, optional): Screen height. Defaults to 600.
@@ -21,6 +21,7 @@ class Game:
         self.font = pygame.font.Font(None,36)
         self.score = 0
         self.screen = pygame.display.set_mode((width,height))
+        self.background_color = Color('black')
         self.clock = pygame.time.Clock()
         self.paddle = Paddle( int(width / 2), height - 20)
         self.ball = Ball(self.paddle)
