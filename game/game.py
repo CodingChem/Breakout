@@ -1,8 +1,8 @@
 from sys import exit
 import pygame
 from pieces.bricks import Bricks
+from pieces.brick import Brick
 from pieces.ball import Ball
-from pieces.paddle import Paddle
 from pieces.color import Color
 
 class Game:
@@ -23,7 +23,7 @@ class Game:
         self.screen = pygame.display.set_mode((width,height))
         self.background_color = Color('black')
         self.clock = pygame.time.Clock()
-        self.paddle = Paddle( int(width / 2), height - 20)
+        self.paddle = Brick( int(width / 2), height - 20)
         self.ball = Ball(self.paddle)
 
         self.lives = 3

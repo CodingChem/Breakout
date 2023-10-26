@@ -51,3 +51,10 @@ class Brick(Rect):
             height: float
         ):
         super().update(left, top, width, height)
+
+
+    def set_velocity(
+            self: Self,
+            dx: int
+    ):
+        self.velocity = Vector(dx, 0)

@@ -4,7 +4,6 @@ from pygame.draw import circle as draw_circle
 
 from .bricks import Bricks
 from .vector import Vector
-from .paddle import Paddle
 from .brick import Brick
 from .color import Color
 
@@ -12,7 +11,7 @@ from .color import Color
 class Ball(Brick):
     def __init__(
             self,
-            paddle: Paddle,
+            paddle: Brick,
             dx: int = 0,
             dy: int = 0,
             color: Color = Color('white'),
@@ -33,7 +32,7 @@ class Ball(Brick):
 
     def place_on_paddle(
             self,
-            paddle: Paddle
+            paddle: Brick
     ) -> None:
         """Places the ball on the paddle
 
@@ -62,7 +61,7 @@ class Ball(Brick):
             self,
             screen_width: int,
             bricks: Bricks,
-            paddle: Paddle
+            paddle: Brick
     ) -> None | Brick:
         """Bounce the ball of walls, the paddle and bricks.
 
@@ -92,7 +91,7 @@ class Ball(Brick):
 
     def shoot(
             self: Self,
-            paddle: Paddle
+            paddle: Brick
         ) -> None:
         self.velocity = paddle.velocity + Vector(0, -1)
         return
