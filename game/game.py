@@ -1,5 +1,6 @@
 from sys import exit
 import pygame
+from pieces.bricks import Bricks
 from pieces.ball import Ball
 from pieces.paddle import Paddle
 from pieces.color import Color
