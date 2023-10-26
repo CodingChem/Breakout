@@ -1,5 +1,6 @@
 from pygame import SurfaceType
 from pygame.draw import circle as draw_circle
+from .vector import Vector
 from .paddle import Paddle
 from .brick import Brick
 from .color import Color
@@ -24,9 +25,8 @@ class Ball(Brick):
             color (int, optional): color of ball. Defaults to white
             radius (int, optional): Radius of ball. Defaults to 10.
         """
-        super().__init__(paddle.rect.centerx - radius, paddle.rect.top + radius * 2, radius * 2, radius * 2, color)
-        self.dx = dx
-        self.dy = dy
+        super().__init__(paddle.centerx - radius, paddle.top + radius * 2, radius * 2, radius * 2, color)
+        self.velocity = Vector(dx, dy)
 
 
     def place_on_paddle(
@@ -38,13 +38,13 @@ class Ball(Brick):
         Args:
             paddle (Paddle): The paddle object
         """
-        self.rect.update(
-            paddle.rect.centerx - self.rect.width / 2,
-            paddle.rect.top - self.rect.height,
-            self.rect.width,
-            self.rect.height
+        super().update(
+            paddle.centerx - self.width / 2,
+            paddle.top - self.height,
+            self.width,
+            self.height
         )
-        self.dx, self.dy = 0, 0
+        self.velocity = Vector(0,0)
 
 
     def draw(
@@ -53,19 +53,19 @@ class Ball(Brick):
         ) -> None:
         """Draws the ball on the screen
         """
-        draw_circle(screen, self.color.to_tuple(), self.rect.center, self.rect.width/2)
+        draw_circle(screen, self.color.to_tuple(), self.center, self.width/2)
 
 
     def update(
             self,
             speed: int,
         ) -> None:
-        """Moves the ball according to its velocity(dx,dy)
+        """Moves the ball according to its velocity
 
         Args:
             speed: the speed multiplier given to the ball object
         """
-        self.rect.move_ip(self.dx * speed, self.dy * speed)
+        self.move_ip(self.velocity.x * speed, self.velocity.y * speed)
 
 
     def bounce(
@@ -83,21 +83,21 @@ class Ball(Brick):
         Returns:
             Brick or None: The brick that was hit, or None if no brick was hit.
         """
-        if self.rect.left < 0 or self.rect.right > screen_width:
-            self.dx *= -1
-        elif self.rect.top < 0 or self.rect.colliderect(paddle.rect):
-            self.dy *= -1
+        if self.left < 0 or self.right > screen_width:
+            self.velocity.x *= -1
+        elif self.top < 0 or self.colliderect(paddle):
+            self.velocity.y *= -1
         else:
-            hit_brick = self.rect.collidelist(bricks) #type: ignore
+            hit_brick = self.collidelist(bricks)
             if hit_brick != -1:
-                self.dy *= -1
+                self.velocity.y *= -1
                 return bricks[hit_brick]
 
 
     def is_on_paddle(self) -> bool:
-        return self.dx == 0 and self.dy == 0
+        return self.velocity.x == 0 and self.velocity.y == 0
 
 
     def shoot(self) -> None:
-        self.dy = -1
+        self.velocity.y = -1
         return
