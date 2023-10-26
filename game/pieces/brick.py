@@ -10,7 +10,7 @@ class Brick:
             y: int,
             width: int = 60,
             height: int = 20,
-            color: Color = Color(None, randint(0,255), randint(0,255), randint(0,255))
+            color: Color | None = None
     ) -> None:
         """Initializes the Brick class
 
@@ -21,8 +21,10 @@ class Brick:
             height (int): The height of the brick. Defaults to 20
             color (tuple[int,int,int], optional): _description_. Defaults to (random.randint(0,255), random.randint(0,255), random.randint(0,255)).
         """
-        self.rect = Rect(x, y, width, height)
-        self.color = color
+        if color is None:
+            self.color = Color(None, randint(0,255), randint(0,255), randint(0,255))
+        else:
+            self.color = color
 
 
     def draw(self, screen: SurfaceType) -> None:
