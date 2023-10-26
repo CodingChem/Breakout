@@ -71,11 +71,18 @@ class Game:
                 case pygame.QUIT:
                     pygame.quit()
                     exit()
+                case pygame.KEYUP:
+                    self.paddle.set_velocity(0)
                 case pygame.KEYDOWN:
                     match event.key:
                         case pygame.K_SPACE:
                             if self.ball.is_on_paddle():
-                                self.ball.shoot()
+                                self.ball.shoot(self.paddle)
+                        case pygame.K_LEFT:
+                            self.paddle.set_velocity(-1)
+                        case pygame.K_RIGHT:
+                            self.paddle.set_velocity(1)
+
 
         if not self.bricks:
             self.ball.velocity.x = 0
