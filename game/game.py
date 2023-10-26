@@ -103,7 +103,7 @@ class Game:
 
 
     def update(self):
-        self.paddle.update(2, self.screen.get_width())
+        self.paddle.update(2)
         if self.ball.is_on_paddle():
             self.ball.place_on_paddle(self.paddle)
         else:
