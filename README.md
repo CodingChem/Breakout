@@ -2,7 +2,7 @@
 
 ## ToC
 
-- [Aim](# aim)
+[Aim](# Aim)
 
 ## Aim
 
