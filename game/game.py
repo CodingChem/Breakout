@@ -25,15 +25,9 @@ class Game:
         self.ball = Ball(self.paddle)
 
         self.lives = 3
-        self.reset_bricks()
+        self.bricks = Bricks()
 
-    def reset_bricks(self) -> None:
-        """Reset the bricks for a new game
-        """
-        self.bricks = []
-        for i in range(5):
-            for j in range(12):
-                self.bricks.append(Brick(j * 60 + 50, i * 20 + 50))
+
 
 
     # TODO
@@ -69,8 +63,7 @@ class Game:
         for event in pygame.event.get():
             match event.type:
                 case pygame.QUIT:
-                    pygame.quit()
-                    exit()
+                    self.quit_game()
                 case pygame.KEYUP:
                     self.paddle.set_velocity(0)
                 case pygame.KEYDOWN:
@@ -108,6 +101,13 @@ class Game:
             self.ball.place_on_paddle(self.paddle)
         else:
             self.ball.update(2)
+
+
+    def quit_game(
+            self,
+    ) -> None:
+        pygame.quit()
+        exit()
 
 if __name__ == '__main__':
     game = Game()
