@@ -1,3 +1,4 @@
+from typing import Self
 from pygame import SurfaceType, Rect
 from pygame.draw import rect as draw_rect
 from random import randint
@@ -10,6 +11,8 @@ class Brick(Rect):
             self,
             x: int,
             y: int,
+            dx: int = 0,
+            dy: int = 0,
             width: int = 60,
             height: int = 20,
             color: Color | None = None
@@ -24,7 +27,7 @@ class Brick(Rect):
             color (tuple[int,int,int], optional): _description_. Defaults to (random.randint(0,255), random.randint(0,255), random.randint(0,255)).
         """
         super().__init__(x, y, width, height)
-        self.velocity = Vector(0,0)
+        self.velocity = Vector(dx,dy)
         if color is None:
             self.color = Color(None, randint(0,255), randint(0,255), randint(0,255))
         else:
@@ -36,7 +39,7 @@ class Brick(Rect):
         draw_rect(screen, self.color.to_tuple(), self)
 
 
-    def update(self, speed):
+    def update(self, speed: int = 1):
         self.move_ip(self.velocity.x * speed, self.velocity.y * speed)
 
 
