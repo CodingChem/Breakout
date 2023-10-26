@@ -11,7 +11,6 @@ class Ball {
     + void: shoot()
 }
 class Brick {
-    - rect: Rect
     - color: Color
     + Brick(x: int, y: int, width: int, height: int, color: Color)
     + void: draw(SurfaceType)
@@ -44,6 +43,7 @@ class Color {
     + tuple[int, int, int] : to_tuple()
 }
 
+pygame.Rect <|-- Brick
 Color *-- Brick
 Brick <|-- Ball
 Brick <|-- Paddle
