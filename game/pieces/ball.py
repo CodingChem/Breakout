@@ -56,18 +56,6 @@ class Ball(Brick):
         draw_circle(screen, self.color.to_tuple(), self.center, self.width/2)
 
 
-    def update(
-            self,
-            speed: int,
-        ) -> None:
-        """Moves the ball according to its velocity
-
-        Args:
-            speed: the speed multiplier given to the ball object
-        """
-        self.move_ip(self.velocity.x * speed, self.velocity.y * speed)
-
-
     def bounce(
             self,
             screen_width: int,
