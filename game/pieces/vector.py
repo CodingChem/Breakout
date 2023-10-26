@@ -15,3 +15,15 @@ class Vector:
             other: Self
     ) -> Self:
         return Vector(self.x + other.x, self.y + other.y)
+
+
+    def flip_horizontal_component(
+            self: Self,
+    ) -> None:
+        self.x *= -1
+
+
+    def flip_vertical_component(
+            self: Self,
+    ) -> None:
+        self.y *= -1

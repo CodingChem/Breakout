@@ -72,9 +72,9 @@ class Ball(Brick):
             Brick or None: The brick that was hit, or None if no brick was hit.
         """
         if self.left < 0 or self.right > screen_width:
-            self.velocity.x *= -1
-        elif self.top < 0 or self.colliderect(paddle):
-            self.velocity.y *= -1
+            self.velocity.flip_horizontal_component()
+        elif self.top < 0:
+            self.velocity.flip_vertical_component()
         else:
             hit_brick = self.collidelist(bricks)
             if hit_brick != -1:
