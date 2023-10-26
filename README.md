@@ -1,9 +1,5 @@
 # Breakout clone
 
-## ToC
-
-[Aim](# Aim)
-
 ## Aim
 
 The aim of this project is simply practicing OOP in Python using pygames and learning plantUML for uml drawing.
