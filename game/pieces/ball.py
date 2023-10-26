@@ -25,8 +25,7 @@ class Ball(Brick):
             color (int, optional): color of ball. Defaults to white
             radius (int, optional): Radius of ball. Defaults to 10.
         """
-        super().__init__(paddle.centerx - radius, paddle.top + radius * 2, radius * 2, radius * 2, color)
-        self.velocity = Vector(dx, dy)
+        super().__init__(paddle.centerx - radius, paddle.top + radius * 2, dx, dy, radius * 2, radius * 2, color)
 
 
     def place_on_paddle(
