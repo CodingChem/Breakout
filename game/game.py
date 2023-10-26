@@ -2,7 +2,7 @@ from sys import exit
 import pygame
 from pieces.ball import Ball
 from pieces.paddle import Paddle
-from pieces.brick import Brick
+from pieces.color import Color
 
 class Game:
     def __init__(
