@@ -51,7 +51,7 @@ class Game:
     def draw(self) -> None:
         """Draws the screen with the objects and updates the display
         """
-        self.screen.fill((0,0,0))
+        self.screen.fill(self.background_color.to_tuple())
         self.paddle.draw(self.screen)
         self.ball.draw(self.screen)
         for brick in self.bricks:
