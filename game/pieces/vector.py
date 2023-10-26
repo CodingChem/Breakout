@@ -1,3 +1,4 @@
+from math import sqrt
 from typing import Self
 
 
@@ -27,3 +28,13 @@ class Vector:
             self: Self,
     ) -> None:
         self.y *= -1
+
+
+    def magnitude(self: Self):
+        return sqrt(self.x ** 2 + self.y ** 2)
+
+
+    def normalize(self: Self):
+        magnitude = self.magnitude()
+        self.x /= magnitude
+        self.y /= magnitude
