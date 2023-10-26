@@ -1,3 +1,4 @@
+from typing import Self
 from pygame import SurfaceType
 from pygame.draw import circle as draw_circle
 from .vector import Vector
@@ -97,6 +98,9 @@ class Ball(Brick):
         return self.velocity.x == 0 and self.velocity.y == 0
 
 
-    def shoot(self) -> None:
-        self.velocity.y = -1
+    def shoot(
+            self: Self,
+            paddle: Paddle
+        ) -> None:
+        self.velocity = paddle.velocity + Vector(0, -1)
         return
