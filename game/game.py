@@ -90,8 +90,7 @@ class Game:
         if self.ball.bottom > self.screen.get_height():
             self.lives -= 1
             if self.lives == 0:
-                self.lives = 3
-                self.reset_bricks()
+                self.quit_game()
             self.ball.place_on_paddle(self.paddle)
 
 
