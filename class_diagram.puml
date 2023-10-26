@@ -11,8 +11,10 @@ class Ball {
 }
 class Brick {
     - color: Color
+    + velocity: Vector
     + Brick(x: int, y: int, width: int, height: int, color: Color)
     + void: draw(SurfaceType)
+    + void: update(speed: int)
 }
 class Paddle {
     + void: update(speed: int, border_width: int)
@@ -48,6 +50,7 @@ class Vector {
 
 pygame.Rect <|-- Brick
 Color *-- Brick
+Vector *-- Brick
 Brick <|-- Ball
 Brick <|-- Paddle
 Ball *-- Game
