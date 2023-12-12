@@ -18,6 +18,19 @@ class Vector:
         return Vector(self.x + other.x, self.y + other.y)
 
 
+    def dot_product(
+            self: Self,
+            other: Self
+    ):
+        pass
+
+
+    def cross_product(
+            self,
+    ):
+        pass
+
+
     def flip_horizontal_component(
             self: Self,
     ) -> None:
