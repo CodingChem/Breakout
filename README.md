@@ -1,5 +1,8 @@
 # Breakout clone
 
+#### Video Demo:  [Demo](https://www.youtube.com/watch?v=NJK946z44qg)
+
+# Description:
 ## Aim
 
 The aim of this project is simply practicing OOP in Python using pygames and learning plantUML for uml drawing.
@@ -14,4 +17,4 @@ Left arrow to move left, right arrow to move right. Space to launch the ball.
 
 ## Classes overview
 
-![image](diagrams/class_diagram/class%20diagram.png)
+![image](diagrams/class_diagram/class%20diagram.png) 
